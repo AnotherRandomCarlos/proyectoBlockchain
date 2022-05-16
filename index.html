@@ -1,0 +1,81 @@
+<html>
+  <head>
+    <!-- Moralis SDK code -->
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script src="https://unpkg.com/moralis/dist/moralis.js"></script>
+  </head>
+  <body>
+    <h1>Página para interactuar con el smart contract de Carlos Arranz Luque</h1>
+    <h2>(Están los principales métodos, pero no todos, chequear el contrato en Etherscan para comprobar todos los métodos)</h2>
+
+    <h3>Por favor, haga login en su cuenta de Metamask antes de probar los métodos:</h3>
+    <button id="btn-login">Login</button>
+    <button id="btn-logout">Logout</button> <br>
+
+    <!-- ENLACES ÚTILES  -->
+    <h3><a href=https://ropsten.etherscan.io/address/0xe56cd1b9f4d7D8C8A75a2536b2b16Fce30d391C6 target="_blank" id="enlace-contrato">Enlace al contrato</a></h3>
+    
+    <p>---------------------------------------------------------------------------------------------------------------------------------------------------</p>
+    <h2>FUNCIONES DE LECTURA DE LA BLOCKCHAIN:</h2>
+
+    <!-- VERIFICAR SI ERES ADMINISTRADOR DEL CONTRATO -->
+    <h3>Verificar si eres administrador del contrato:</h3>
+    <input type="text" id="texto-verificar-admin" size="10" readonly>
+    <button id="btn-verificar-admin">Verificar Admin</button> <br>
+    
+    <!-- VERIFICAR CUANTOS TOKENS TIENE UNA DIRECCIÓN -->
+    <h3>Cantidad de tokens que posee una dirección:</h3>
+    <p>Introduce dirección a chequear: <input type="text" id="direccion-usuario" size="45"> <button id="btn-leer">Comprobar dirección</button> </p>
+    <p>Cantidad de tokens que posee la dirección:<input type="text" id="saldo-direccion" size="12" readonly></p> <br>
+    
+    <!-- VERIFICAR CUANTOS TOKENS TIENE LA RED EN TOTAL  -->
+    <h3>Cantidad de tokens que existen (total supply):</h3>
+    <p>Cantidad de tokens: <input type="text" id="saldo-red" size="12" readonly> <button id="btn-saldo-red">Comprobar</button></p> <br>
+
+    <!-- VERIFICAR CUANTOS SI LA RED ESTÁ PAUSADA  -->
+    <h3>Estado de la red (pausada o no):</h3>
+    <p>Estado: <input type="text" id="estado-red" size="18" readonly> <button id="btn-esdado-red">Comprobar</button></p> <br>
+
+    <p>---------------------------------------------------------------------------------------------------------------------------------------------------</p>
+    <h2>FUNCIONES DE ESCRITURA DE LA BLOCKCHAIN:</h2>
+
+    <h3><a target="_blank" id="enlace-transaccion">Enlace a la última transacción de escritura ejecutada</a></h3>
+
+    <!-- MINTEAR TOKENS A OTRA DIRECCIÓN SI ERES ADMIN -->
+    <h3>Mintear tokens como administrador:</h3>
+    <p>Ten en cuenta que hay 2 decimales, por ejemplo el número 100 equivale a mintear 1 token, el 255 a 2.55 tokens</p>
+    <p>Introduce la dirección que recibirá los tokens: <input type="text" id="direccion-mint" size="45"></p>
+    <p>Introduce el número de tokens que recibirá: <input type="text" id="numero-mint" size="15"> <button id="btn-mint">Mintear</button> </p> <br>
+
+    <!-- BURNEAR TOKENS DE OTRA DIRECCIÓN SI ERES ADMIN -->
+    <h3>Burnear tokens como administrador:</h3>
+    <p>Ten en cuenta que hay 2 decimales, por ejemplo el número 100 equivale a burnear 1 token, el 255 a 2.55 tokens</p>
+    <p>Introduce la dirección que será burneada: <input type="text" id="direccion-burn" size="45"></p>
+    <p>Introduce el número de tokens que quemará: <input type="text" id="numero-burn" size="15"> <button id="btn-burn">Burnear</button> </p> <br>
+
+    <!-- PAUSAR/DESPAUSAR LA RED SI ERES ADMIN -->
+    <h3>Pausar/despausar la red como administrador:</h3>
+    <p>Ten en cuenta que si pausas la red, deshabilitaras las transacciones, minteos, burneos de la red del token</p>
+    <p>Selecciona pausar/despausar: <br>
+    <input type="radio" name="seleccion-pausa" value="Pausar"> Pausar <br>      
+    <input type="radio" name="seleccion-pausa" value="Despausar" checked> Despausar <br>
+    <button id="btn-pausa">Implementar</button>
+    </p><br>
+
+    <!-- MANDAR TOKENS A OTRA DIRECCIÓN -->
+    <h3>Mandar tokens a otra dirección:</h3>
+    <p>Ten en cuenta que hay 2 decimales, por ejemplo el número 100 equivale a mandar 1 token, el 255 a 2.55 tokens</p>
+    <p>Introduce la dirección a la que enviarás tus tokens: <input type="text" id="direccion-mandar" size="45"></p>
+    <p>Introduce el número de tokens que se enviarán: <input type="text" id="numero-mandar" size="15"> <button id="btn-mandar">Mandar tokens</button> </p> <br>
+
+
+    <!-- AGREGAR NUEVO ADMINISTRADOR SI ERES ADMIN -->
+    <h3>Añadir un nuevo administrador:</h3>
+    <p>Introduce la dirección que será añadida como administradora: <input type="text" id="direccion-admin" size="45"> <button id="btn-admin">Añadir admin</button></p>
+
+    <!-- SCRIPTS  -->
+    <script type="text/javascript" src="./main.js"></script> 
+    
+
+  </body>
+</html>
